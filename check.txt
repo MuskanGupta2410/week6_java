@@ -1,0 +1,29 @@
+import java.util.*;
+class MyException extends Exception{
+     String a;
+     MyException(String a){
+         this.a=a;
+     }
+     public String toString()
+     {
+         return a;
+     }
+}
+class check{
+    static void ch(String []arg) throws MyException{
+        
+        if(arg.length<=3)
+        {
+            throw new MyException("Arguments less than 3");
+        }}
+
+public static void main(String arg[]){
+    try{
+        ch(arg);
+}
+    catch(MyException e)
+{
+System.out.println("caught"+e);
+}
+        
+}}

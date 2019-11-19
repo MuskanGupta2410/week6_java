@@ -1,0 +1,46 @@
+import java.util.*;
+class eligible extends Exception
+{
+    String a;
+    eligible(String a)
+    {
+        this.a=a;
+    }
+    public String toString()
+    {
+        return a;
+    }
+}
+class vote{
+    static void check(int a) throws eligible{
+        
+        if(a<1||a>120)
+        {
+            throw new eligible("Invalid age exception");
+        }
+        else if(a<18)
+        {
+            throw new eligible("NotEligibleToVoteException");
+        }
+        else
+        {
+            System.out.println("Eligible to vote");
+            
+        }
+    }
+public static void main(String args[])
+{
+    Scanner o=new Scanner(System.in);
+    try{
+        System.out.println("Enter the age of the person");
+        int a=o.nextInt();
+        check(a);
+    }
+    catch(eligible e)
+    {
+        System.out.println("Caught:" +e);
+    }
+}
+}
+        
+        

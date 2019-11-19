@@ -1,0 +1,70 @@
+import java.util.*;
+class marks extends Exception{
+    String a;
+    marks(String a)
+    {
+        this.a=a;
+    }
+    public String toString(){
+        return a;
+    }
+   
+    
+}
+class attendance extends Exception{
+    String b;
+    attendance(String b){
+    this.b=b;
+    }
+    public String toString(){
+        return b;
+    }
+    
+}
+class eligible extends Exception{
+    String c;
+    eligible(String c){
+    this.c=c;
+    }
+    public String toString(){
+        return c;
+    }
+    
+}
+class atten{
+        eligible e=new eligible("NotEligibleException");
+
+void check(int a, double b) throws eligible{
+        if(a<20&&b>=80)
+        {
+           
+            e.initCause(new marks("LowMarksException"));
+            throw e;
+        }
+        if(a>=20&&b<=80)
+        {
+          
+            e.initCause(new attendance("LowAttendanceException"));
+            throw e;
+        }
+        else{
+            System.out.println("The student is eligible");
+        }
+}
+public static void main(String args[])
+{    atten c=new atten();
+     atten a=new atten();
+    try{
+        
+        a.check(30,90.00);
+        c.check(10,80.00);
+    }
+    catch(eligible e)
+    {
+        System.out.println("Caught:"+e);
+        System.out.println("Original Cause:"+e.getCause());
+    }
+    
+}}
+
+            
